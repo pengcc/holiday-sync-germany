@@ -52,6 +52,21 @@ For substantial work, use:
 Every task must have a saved plan under `dev_locals/plans/` before execution. `dev_locals/` is
 local working memory and must remain ignored by Git unless the user explicitly requests otherwise.
 
+### Plan Persistence Gate
+
+- A finalized Plan Mode proposal is not considered execution-ready until its complete, latest
+  version is saved under `dev_locals/plans/`.
+- When leaving Plan Mode to execute an approved plan, the first repository mutation must save the
+  plan. Do this before creating a feature branch, editing tracked files, changing dependencies,
+  refreshing data, or invoking an external write action.
+- If the task needs a separate execution/workflow plan, save the approved product plan first, then
+  save the task-specific execution plan.
+- Before implementation, verify that the saved file exists and still matches the latest approved
+  plan. Do not silently execute an older draft after the user revised the plan.
+- After an interruption or context transition, resume from the saved plan. If no saved plan exists,
+  reconstruct it from the conversation, show or confirm any uncertain decisions, save it, and only
+  then continue.
+
 ## Git And Branch Discipline
 
 - The canonical remote is `git@github.com:pengcc/holiday-sync-germany.git`.

@@ -34,6 +34,12 @@ Read these references as needed for the task:
 ## Workflow Standard
 
 - Save every task plan under `dev_locals/plans/` before execution.
+- Treat a finalized Plan Mode proposal as durable only after its complete latest version is saved.
+- After leaving Plan Mode, save the approved plan as the first repository mutation. Save it before
+  branch creation, tracked edits, dependency changes, data refreshes, or external write actions.
+- Verify the saved plan matches the latest approved version before executing it.
+- Resume interrupted work from the saved plan; never rely on conversation memory when a durable
+  plan should exist.
 - Use Plan Mode for foundation, architecture, roadmap, workflow/guideline, data-quality, privacy, security, deployment, and broad UI decisions.
 - Use Goals only when the user explicitly asks for a Goal, token budget, or long-running tracked effort.
 - Use code-review stance when the user explicitly asks for review; otherwise perform a lightweight self-review before substantial commits.
