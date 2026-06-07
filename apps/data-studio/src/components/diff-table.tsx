@@ -14,16 +14,25 @@ const columns = [
     cell: (context) => <Status value={context.getValue()} />,
   }),
   columnHelper.accessor("recordId", {
-    header: "Record",
-    cell: (context) => <code className="text-xs">{context.getValue()}</code>,
+    header: "Holiday",
+    cell: (context) => {
+      const entry = context.row.original;
+      return (
+        <strong>{entry.after?.names.de ?? entry.before?.names.de ?? context.getValue()}</strong>
+      );
+    },
   }),
-  columnHelper.accessor((row) => row.before?.startDate ?? "—", {
+  columnHelper.accessor((row) => formatRange(row.before), {
     id: "before",
     header: "Before",
   }),
-  columnHelper.accessor((row) => row.after?.startDate ?? "—", {
+  columnHelper.accessor((row) => formatRange(row.after), {
     id: "after",
     header: "After",
+  }),
+  columnHelper.accessor((row) => formatScopeChange(row), {
+    id: "scope",
+    header: "Scope",
   }),
   columnHelper.accessor((row) => row.changedFields.join(", ") || "—", {
     id: "fields",
@@ -76,4 +85,23 @@ export function DiffTable({ entries }: { entries: DiffEntry[] }) {
 
 function Status({ value }: { value: DiffEntry["kind"] }) {
   return <span className={`status status-${value}`}>{value}</span>;
+}
+
+function formatRange(record: DiffEntry["before"]): string {
+  if (!record) {
+    return "—";
+  }
+  return record.startDate === record.endDate
+    ? record.startDate
+    : `${record.startDate} to ${record.endDate}`;
+}
+
+function formatScopeChange(entry: DiffEntry): string {
+  const before = entry.before
+    ? `${entry.before.scope}${entry.before.regions.length ? ` (${entry.before.regions.join(", ")})` : ""}`
+    : "—";
+  const after = entry.after
+    ? `${entry.after.scope}${entry.after.regions.length ? ` (${entry.after.regions.join(", ")})` : ""}`
+    : "—";
+  return before === after ? after : `${before} → ${after}`;
 }

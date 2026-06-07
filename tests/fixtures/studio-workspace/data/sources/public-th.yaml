@@ -1,0 +1,28 @@
+schemaVersion: 1
+id: public-th-2026
+name: Thüringer Feiertagsgesetz 2026
+authority: official
+category: public
+jurisdiction: DE-TH
+homepageUrl: https://landesrecht.thueringen.de/
+fetchUrl: https://landesrecht.thueringen.de/test
+format: html
+adapter: public-rules
+enabled: true
+period:
+  kind: calendarYear
+  id: "2026"
+  startDate: 2026-01-01
+  endDate: 2026-12-31
+license:
+  note: Official test fixture
+  redistribution: prohibited
+fetch:
+  expectedContentTypes: [text/html]
+  allowedHosts: [landesrecht.thueringen.de]
+  timeoutMs: 1000
+  maxBytes: 10000
+  maxRedirects: 0
+freshness:
+  retrievalCadenceDays: 90
+  reviewBy: 2027-01-31

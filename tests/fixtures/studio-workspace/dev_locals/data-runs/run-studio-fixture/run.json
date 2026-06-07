@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "run-studio-fixture",
+  "createdAt": "2026-06-06T10:00:00.000Z",
+  "updatedAt": "2026-06-06T10:10:00.000Z",
+  "stage": "compared",
+  "sources": [
+    {
+      "sourceId": "school-bw-2026-27",
+      "jurisdiction": "DE-BW",
+      "periodId": "2026-27",
+      "status": "completed",
+      "stage": "compared",
+      "recordCount": 2,
+      "issueCount": 0,
+      "decisionRequiredCount": 0
+    },
+    {
+      "sourceId": "public-th-2026",
+      "jurisdiction": "DE-TH",
+      "periodId": "2026",
+      "status": "completed",
+      "stage": "compared",
+      "recordCount": 1,
+      "issueCount": 0,
+      "decisionRequiredCount": 0
+    }
+  ]
+}

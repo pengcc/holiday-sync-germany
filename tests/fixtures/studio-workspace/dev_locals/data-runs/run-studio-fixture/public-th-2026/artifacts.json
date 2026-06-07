@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "schemaVersion": 1,
+    "id": "public-th-2026",
+    "name": "Thüringer Feiertagsgesetz 2026",
+    "authority": "official",
+    "category": "public",
+    "jurisdiction": "DE-TH",
+    "homepageUrl": "https://landesrecht.thueringen.de/",
+    "fetchUrl": "https://landesrecht.thueringen.de/test",
+    "format": "html",
+    "adapter": "public-rules",
+    "enabled": true,
+    "period": {
+      "kind": "calendarYear",
+      "id": "2026",
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31"
+    },
+    "license": {
+      "note": "Official test fixture",
+      "redistribution": "prohibited"
+    },
+    "fetch": {
+      "expectedContentTypes": ["text/html"],
+      "allowedHosts": ["landesrecht.thueringen.de"],
+      "timeoutMs": 1000,
+      "maxBytes": 10000,
+      "maxRedirects": 0
+    },
+    "freshness": {
+      "retrievalCadenceDays": 90,
+      "reviewBy": "2027-01-31"
+    }
+  },
+  "fingerprint": {
+    "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "bytes": 1024,
+    "contentType": "text/html",
+    "retrievedAt": "2026-06-06T10:05:00.000Z",
+    "finalUrl": "https://landesrecht.thueringen.de/test"
+  },
+  "records": [
+    {
+      "schemaVersion": 1,
+      "id": "public-th-2026:unity",
+      "jurisdiction": "DE-TH",
+      "category": "public",
+      "scope": "statewide",
+      "regions": [],
+      "startDate": "2026-10-03",
+      "endDate": "2026-10-03",
+      "names": {
+        "de": "Tag der Deutschen Einheit",
+        "en": "German Unity Day",
+        "zh": "德国统一日"
+      },
+      "periodId": "2026",
+      "source": {
+        "sourceId": "public-th-2026",
+        "sourceEventId": "unity-2026"
+      }
+    }
+  ],
+  "issues": [],
+  "diff": [],
+  "overrideIds": []
+}

@@ -317,6 +317,204 @@ textarea {
   font-size: 12px;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+th,
+td {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 750;
+}
+
+.batch-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  border: 1px solid #e2e8f0;
+}
+
+.batch-summary > div {
+  min-width: 0;
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 12px;
+}
+
+.batch-summary > div:nth-child(4n) {
+  border-right: 0;
+}
+
+.batch-summary > div:nth-last-child(-n + 4) {
+  border-bottom: 0;
+}
+
+.batch-summary dt {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+
+.batch-summary dd {
+  margin: 5px 0 0;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.batch-summary a {
+  color: #0369a1;
+}
+
+.summary-fingerprint code {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.record-filters {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.5fr) repeat(3, minmax(130px, 0.7fr));
+  gap: 10px;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.search-field > span {
+  position: relative;
+  display: block;
+}
+
+.search-field svg {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 16px;
+  height: 16px;
+  color: #64748b;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.search-field input {
+  padding-left: 34px;
+}
+
+.result-count {
+  margin: 10px 0;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.record-table table {
+  min-width: 960px;
+}
+
+.record-table td:first-child {
+  min-width: 180px;
+}
+
+.source-event {
+  display: block;
+  max-width: 220px;
+  overflow: hidden;
+  color: #475569;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-label {
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.status-statewide {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status-regional {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-schoolSpecific {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.coverage-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coverage-table table {
+  min-width: 680px;
+}
+
+.coverage-table th:not(:first-child),
+.coverage-table td {
+  text-align: center;
+}
+
+.coverage-table tbody th {
+  background: #fff;
+}
+
+.coverage-status {
+  display: inline-flex;
+  min-width: 70px;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 4px 7px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.coverage-ready {
+  border-color: #7dd3fc;
+  background: #e0f2fe;
+  color: #075985;
+}
+
+.coverage-blocked {
+  border-color: #fca5a5;
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.coverage-approved {
+  border-color: #86efac;
+  background: #dcfce7;
+  color: #166534;
+}
+
+.coverage-missing {
+  border-color: #cbd5e1;
+  background: #f1f5f9;
+  color: #475569;
+}
+
 .status {
   display: inline-flex;
   width: fit-content;
@@ -415,26 +613,6 @@ textarea {
 
 .table-scroll {
   overflow-x: auto;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 12px;
-}
-
-th,
-td {
-  border-bottom: 1px solid #e2e8f0;
-  padding: 10px;
-  text-align: left;
-  vertical-align: top;
-}
-
-th {
-  background: #f8fafc;
-  color: #475569;
-  font-weight: 750;
 }
 
 .review-grid {
@@ -569,6 +747,28 @@ th {
   .batch-filters {
     grid-template-columns: repeat(2, minmax(140px, 1fr));
   }
+
+  .batch-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .batch-summary > div,
+  .batch-summary > div:nth-child(4n) {
+    border-right: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .batch-summary > div:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .batch-summary > div:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+
+  .record-filters {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+  }
 }
 
 @media (max-width: 680px) {
@@ -601,6 +801,26 @@ th {
 
   .batch-filters {
     grid-template-columns: 1fr;
+  }
+
+  .batch-summary,
+  .record-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .batch-summary > div,
+  .batch-summary > div:nth-child(2n),
+  .batch-summary > div:nth-last-child(-n + 2) {
+    border-right: 0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .batch-summary > div:last-child {
+    border-bottom: 0;
+  }
+
+  .coverage-legend {
+    justify-content: start;
   }
 
   .batch-select-row {
