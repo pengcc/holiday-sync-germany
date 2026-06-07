@@ -14,7 +14,11 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { useMemo, useState } from "react";
+import { BatchSummary } from "../components/batch-summary";
+import { CoverageMatrix } from "../components/coverage-matrix";
 import { DiffTable } from "../components/diff-table";
+import { HolidayRecordTable } from "../components/holiday-record-table";
+import { buildReviewCoverageMatrix } from "../lib/review-model";
 import {
   getDashboard,
   makeOverrideDraft,
@@ -67,6 +71,10 @@ function StudioPage() {
   );
   const periods = [...new Set(dashboard.sources.map((source) => source.period.id))].sort();
   const jurisdictions = [...new Set(dashboard.sources.map((source) => source.jurisdiction))].sort();
+  const coverageMatrix = useMemo(
+    () => buildReviewCoverageMatrix(dashboard.release, dashboard.sources, dashboard.batches),
+    [dashboard.batches, dashboard.release, dashboard.sources],
+  );
 
   const selectedBatch = useMemo(
     () =>
@@ -291,7 +299,62 @@ function StudioPage() {
               <section className="section">
                 <div className="section-heading">
                   <div>
-                    <p className="eyebrow">Release coverage</p>
+                    <p className="eyebrow">Selected batch</p>
+                    <h2>Batch summary</h2>
+                  </div>
+                  <StatusText
+                    blocked={unresolvedBlockers.length > 0}
+                    count={selectedBatch.sourceRun.issueCount}
+                  />
+                </div>
+                {selectedBatch.artifacts ? (
+                  <BatchSummary artifacts={selectedBatch.artifacts} />
+                ) : (
+                  <p className="blocking-note">
+                    Normalized artifacts are unavailable for this batch. Resume its failed stage
+                    before review.
+                  </p>
+                )}
+              </section>
+
+              <section className="section record-section">
+                <div className="section-heading">
+                  <div>
+                    <p className="eyebrow">Normalized source facts</p>
+                    <h2>Holiday records</h2>
+                  </div>
+                  <span>{selectedBatch.artifacts?.records.length ?? 0} records</span>
+                </div>
+                <HolidayRecordTable
+                  records={selectedBatch.artifacts?.records ?? []}
+                  targetYears={dashboard.release.targetYears}
+                />
+              </section>
+
+              <section className="section">
+                <div className="section-heading">
+                  <div>
+                    <p className="eyebrow">Release readiness</p>
+                    <h2>Coverage matrix</h2>
+                  </div>
+                  <ul className="coverage-legend" aria-label="Coverage status legend">
+                    {(["ready", "blocked", "approved", "missing"] as const).map((status) => (
+                      <li key={status}>
+                        <span className={`coverage-status coverage-${status}`}>{status}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <CoverageMatrix
+                  cells={coverageMatrix}
+                  targetYears={dashboard.release.targetYears}
+                />
+              </section>
+
+              <section className="section">
+                <div className="section-heading">
+                  <div>
+                    <p className="eyebrow">Bulk review</p>
                     <h2>Batch selection</h2>
                   </div>
                   <span>{filteredBatches.length} visible batches</span>

@@ -1,0 +1,28 @@
+schemaVersion: 1
+id: school-bw-2026-27
+name: KMK school holidays Baden-Württemberg
+authority: official
+category: school
+jurisdiction: DE-BW
+homepageUrl: https://www.kmk.org/service/ferien.html
+fetchUrl: https://www.kmk.org/test-bw.ics
+format: ics
+adapter: kmk-ics
+enabled: true
+period:
+  kind: schoolYear
+  id: 2026-27
+  startDate: 2026-08-01
+  endDate: 2027-07-31
+license:
+  note: Official test fixture
+  redistribution: unknown
+fetch:
+  expectedContentTypes: [text/calendar]
+  allowedHosts: [www.kmk.org]
+  timeoutMs: 1000
+  maxBytes: 10000
+  maxRedirects: 0
+freshness:
+  retrievalCadenceDays: 90
+  reviewBy: 2027-01-31

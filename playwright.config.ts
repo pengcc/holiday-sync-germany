@@ -1,3 +1,4 @@
+import { resolve } from "node:path";
 import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
@@ -19,6 +20,9 @@ export default defineConfig({
     },
     {
       command: "corepack pnpm dev:studio",
+      env: {
+        HSG_WORKSPACE_ROOT: resolve("tests/fixtures/studio-workspace"),
+      },
       url: "http://127.0.0.1:3010",
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,

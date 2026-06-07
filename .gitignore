@@ -1,5 +1,8 @@
 # Local working memory
 dev_locals/
+!tests/fixtures/studio-workspace/dev_locals/
+!tests/fixtures/studio-workspace/dev_locals/data-runs/
+!tests/fixtures/studio-workspace/dev_locals/data-runs/**
 
 # Dependencies
 node_modules/

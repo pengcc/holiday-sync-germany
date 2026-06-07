@@ -54,6 +54,7 @@ export const getDashboard = createServerFn({ method: "GET" }).handler(async () =
     getDecisionResolutions,
     getSourceRunArtifacts,
     listRuns,
+    loadReleaseConfig,
     loadSourceManifests,
     previewPublish,
     projectPaths,
@@ -61,9 +62,10 @@ export const getDashboard = createServerFn({ method: "GET" }).handler(async () =
   } = await import("@hsg/data-core");
   const workspaceRoot = await findWorkspaceRoot();
   const paths = projectPaths(workspaceRoot);
-  const [sources, runs] = await Promise.all([
+  const [sources, runs, release] = await Promise.all([
     loadSourceManifests(paths.sources),
     listRuns(workspaceRoot),
+    loadReleaseConfig(paths.releaseConfig),
   ]);
   const latestRun = runs[0];
 
@@ -104,6 +106,7 @@ export const getDashboard = createServerFn({ method: "GET" }).handler(async () =
     runs,
     latestRun,
     batches,
+    release,
     publishPreview,
   };
 });
