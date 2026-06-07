@@ -23,6 +23,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "smoke": "playwright test",
+    "workflow:check-new-stage": "node --import tsx tools/workflow-guard/src/check-new-stage.ts",
     "data:refresh": "node --import tsx tools/data-cli/src/index.ts refresh",
     "data:resume": "node --import tsx tools/data-cli/src/index.ts resume",
     "data:validate": "node --import tsx tools/data-cli/src/index.ts validate",
