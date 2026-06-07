@@ -1,0 +1,13 @@
+{
+  "name": "@hsg/workflow-guard",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.0",
+    "typescript": "5.9.3"
+  }
+}

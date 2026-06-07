@@ -70,11 +70,15 @@ local working memory and must remain ignored by Git unless the user explicitly r
 ## Git And Branch Discipline
 
 - The canonical remote is `git@github.com:pengcc/holiday-sync-germany.git`.
-- Before new-stage planning or implementation, verify that the working tree is clean and that local
-  `main` is based on the current `origin/main`.
+- Before new-stage planning or implementation, fetch `origin/main`, switch to `main`, fast-forward
+  it, and run `mise exec -- corepack pnpm workflow:check-new-stage`. Do not create the feature
+  branch unless this command passes.
 - Create plan-specific feature branches from refreshed `main`. Use the `codex/` prefix unless the
   user requests another branch name.
 - Do not create a new feature branch from a completed feature branch unless explicitly requested.
+- Treat Git states precisely: `commit` is local history, `push` is remote branch history, `PR`
+  means review is open, and only `merged` means the work is part of `main`. Never infer one state
+  from another or treat "I committed" as "the branch was published".
 - Commit coherent, reviewable checkpoints after the nearest relevant checks pass.
 - Do not push, create a pull request, change repository settings, configure secrets, or deploy
   unless the user explicitly requests that action.

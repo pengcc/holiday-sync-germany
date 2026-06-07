@@ -34,6 +34,10 @@ Read these references as needed for the task:
 ## Workflow Standard
 
 - Save every task plan under `dev_locals/plans/` before execution.
+- Before creating a branch for a new stage, refresh `main` and require
+  `mise exec -- corepack pnpm workflow:check-new-stage` to pass.
+- Distinguish local commit, remote push, open PR, and verified merge. A commit never proves that
+  work was published or merged.
 - Treat a finalized Plan Mode proposal as durable only after its complete latest version is saved.
 - After leaving Plan Mode, save the approved plan as the first repository mutation. Save it before
   branch creation, tracked edits, dependency changes, data refreshes, or external write actions.
